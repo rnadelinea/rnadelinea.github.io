@@ -118,7 +118,8 @@ h4 {
   grid-template-columns: 110px auto auto auto auto;
   grid-template-rows: 400px 150px;
   grid-template-areas: "area-1 area-2 area-3 area-3 area-4"
-                       "area-1 area-2 area-5 area-5 area-5";
+                       "area-1 area-2 area-5 area-5 area-5"
+                       ". area-6 area-6 area-7  area-7";
   margin-bottom: 30px;
   margin-left: 100px;
   margin-right: 100px;
@@ -162,6 +163,20 @@ h4 {
   padding: 10px;
   padding-top: 5px;
   grid-area: area-5;
+}
+
+.hobbies-grid {
+  border:  1px solid;
+  padding: 10px;
+  padding-top: 5px;
+  grid-area: area-6;
+}
+
+.dream-grid {
+  border:  1px solid;
+  padding: 10px;
+  padding-top: 5px;
+  grid-area: area-7;
 }
 
 
