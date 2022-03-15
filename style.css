@@ -1,0 +1,215 @@
+/* || General Styles */
+
+body {
+  background-color: #FBEAD2;
+  background-image:  url("resources/bg.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  margin-top: 20px;
+}
+
+section {
+  background-color: #F4EBDF;
+  text-align: justify;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding: 20px;
+
+  border:  2px solid;
+  border-radius: 25px;
+  border-color: #363A43;
+  box-shadow: 5px 10px;
+}
+
+
+/* || Custom Fonts */
+
+@font-face {
+  font-family: 'SolerinMagica';
+  src: url(resources/Solerin Magica.otf);  
+}
+
+@font-face {
+  font-family: 'AdittabMarirah';
+  src: url(resources/Adittab Marirah.otf);  
+}
+
+@font-face {
+  font-family: 'Gestack';
+  src: url(resources/Gestack.otf);  
+}
+
+@font-face {
+  font-family: 'BriefRiver';
+  src: url(resources/Brief River.ttf);  
+}
+
+@font-face {
+  font-family: 'Elyaris';
+  src: url(resources/Elyaris.ttf);  
+}
+
+@font-face {
+  font-family: 'MerryCost';
+  src: url(resources/Merry Cost.ttf);  
+}
+
+
+/* || Headers */
+
+h1, h3, h4 {
+  margin: 0px; /*CSS reset */
+  text-align: center;
+}
+
+h1 {
+  color: #8D4F29;
+  font-family: 'SolerinMagica';
+  font-size: 40px;
+  margin-top: 35px;
+}
+
+h3 {
+  color: #B48A70;
+  font-family: 'Gestack';
+  font-size: 25px;
+  margin-bottom: 30px;
+}
+
+h4 {
+  display: block;
+  align: center;
+  color: #363A43;
+  padding-top: 10px;
+  font-family: 'MerryCost';
+  font-size: 20px;
+  letter-spacing: 15px;
+
+}
+
+
+/* || Horizontal lines */
+
+.hr1 {
+  border: 1px solid;
+  margin-left: 35px;
+  margin-right: 35px;
+  color: #363A43;
+}
+
+.hr2 {
+  border: 1px solid;
+  margin-bottom: 0px;
+  margin-left: 100px;
+  margin-right: 100px;
+  color: #363A43;
+}
+
+
+/* || Division/Grid Elements */
+
+.main-grid {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 110px auto auto auto auto;
+  grid-template-rows: 400px 150px;
+  grid-template-areas: "area-1 area-2 area-3 area-3 area-4"
+                       "area-1 area-2 area-5 area-5 area-5";
+  margin-bottom: 30px;
+  margin-left: 100px;
+  margin-right: 100px;
+  overflow: hidden;
+}
+
+.title-grid {
+  border-right:  2px solid;
+  border-color: #363A43;
+  margin: 0px;
+  padding: 0px;
+  grid-area: area-1;
+}
+
+.cmsc-grid {
+  border:  1px solid;
+  margin-top: 20px;
+  padding: 10px;
+  padding-top: 5px;
+  grid-area: area-2;
+}
+
+.elective-grid {
+  border:  1px solid;
+  margin-top: 20px;
+  padding: 10px;
+  padding-top: 5px;
+  grid-area: area-3;
+}
+
+.language-grid {
+  border:  1px solid;
+  margin-top: 20px;
+  padding: 10px;
+  padding-top: 5px;
+  grid-area: area-4;
+}
+
+.food-grid {
+  border:  1px solid;
+  padding: 10px;
+  padding-top: 5px;
+  grid-area: area-5;
+}
+
+
+/* || Other Text Elements */
+
+.paragraph {
+  font-family: 'Elyaris';
+}
+
+.subject {
+  font-family: 'Gestack';
+  text-align: center;
+  margin: 0px;
+}
+
+.subject-ans {
+  font-family: 'BriefRiver';
+  font-size: 22px;
+  color: #8D4F29;
+  text-align: center;
+  margin: 0px;
+
+  border-bottom: 1px solid;
+  border-color: black;
+  border-radius: 50px;
+}
+
+.text-1, .text-2 {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: 'AdittabMarirah';
+  font-size: 70px;
+  position: relative;
+  line-height: 0px;
+}
+
+.text-1 {
+  color: #363A43;
+  padding-top: 50px;
+  padding-right: 22px;
+}
+
+.text-2 {
+  color: #B48A70;
+  opacity: 0.6; 
+  bottom: 557px;
+  right: 30px;
+}
+
+
+
