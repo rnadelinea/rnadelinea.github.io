@@ -120,4 +120,92 @@
 			speed: 1000
 		});
 
+	// Skills Carousel
+	$(document).ready(function () {
+		const skillsContainer = $('.skills');
+		const prevBtn = $('#prevBtn');
+		const nextBtn = $('#nextBtn');
+		const dots = $('.dot');
+		let index = 0;
+
+		// Load images in its own container
+		for (let i = 1; i <= 16; i++) {
+			let skillItem = $('<div>', {
+				class: 'skill-item'
+			});
+
+			let img = $('<img>', {
+				src: `images/skills/${i}.png`,
+				alt: `Skill ${i}`
+			});
+
+			skillItem.append(img);
+			skillsContainer.append(skillItem);
+		}
+
+		const itemWidth = 260; // Width of each image
+		const visibleImages = 3;
+		const maxIndex = 16 - visibleImages; // Maximum scroll index
+
+		function updateCarousel() {
+			skillsContainer.css('transform', `translateX(-${index * itemWidth}px)`);
+
+			// Calculate which dot should be active based on the index
+			// We divide by 4 because we have 4 dots, each representing a group of 4 images
+			const activeDotIndex = Math.floor(index / 4);
+
+			// Update dots
+			dots.removeClass('active');
+			dots.eq(activeDotIndex).addClass('active');
+		}
+
+		nextBtn.click(() => {
+			// Move by 1 item at a time; don't exceed maxIndex
+			index = Math.min(index + 1, maxIndex);
+			updateCarousel();
+		});
+
+		prevBtn.click(() => {
+			// Move back by 1 item at a time; don't go below 0
+			index = Math.max(index - 1, 0);
+			updateCarousel();
+		});
+
+		// Click on dots to jump to a specific page
+		dots.each(function (i) {
+			$(this).click(function () {
+				index = i * 4; // Jump to the start of that page
+				updateCarousel();
+			});
+		});
+
+		// Auto-scroll (still advances by 1 for smoother animation)
+		let interval = setInterval(() => {
+			// Cycle back to the beginning when reaching the end
+			if (index >= maxIndex) {
+				index = 0;
+			} else {
+				index += 1; // Move one image at a time
+			}
+			updateCarousel();
+		}, 3000); // Reduced time since we're scrolling less per interval
+
+		// Pause auto-scroll when hovering over carousel
+		$('.carousel').mouseenter(function () {
+			clearInterval(interval);
+		});
+
+		$('.carousel').mouseleave(function () {
+			interval = setInterval(() => {
+				if (index >= maxIndex) {
+					index = 0;
+				} else {
+					index += 1; // Move one image at a time
+				}
+				updateCarousel();
+			}, 3000);
+		});
+	});
+
 })(jQuery);
+
