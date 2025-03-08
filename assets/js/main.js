@@ -133,25 +133,42 @@
 			let skillItem = $('<div>', {
 				class: 'skill-item'
 			});
-
 			let img = $('<img>', {
 				src: `images/skills/${i}.png`,
 				alt: `Skill ${i}`
 			});
-
 			skillItem.append(img);
 			skillsContainer.append(skillItem);
 		}
 
 		const itemWidth = 260; // Width of each image
-		const visibleImages = 3;
-		const maxIndex = 16 - visibleImages; // Maximum scroll index
+		let visibleImages = 3; // Default for desktop
+		let maxIndex = 16 - visibleImages; // Maximum scroll index
+
+		// Function to adjust visible images based on screen width
+		function adjustVisibleImages() {
+			const windowWidth = $(window).width();
+
+			if (windowWidth < 576) {
+				visibleImages = 1;
+			} else if (windowWidth < 992) {
+				visibleImages = 2;
+			} else {
+				visibleImages = 3;
+			}
+
+			maxIndex = 16 - visibleImages;
+
+			// If current index exceeds new maxIndex, adjust it
+			if (index > maxIndex) index = maxIndex;
+
+			updateCarousel();
+		}
 
 		function updateCarousel() {
 			skillsContainer.css('transform', `translateX(-${index * itemWidth}px)`);
 
 			// Calculate which dot should be active based on the index
-			// We divide by 4 because we have 4 dots, each representing a group of 4 images
 			const activeDotIndex = Math.floor(index / 4);
 
 			// Update dots
@@ -175,6 +192,7 @@
 		dots.each(function (i) {
 			$(this).click(function () {
 				index = i * 4; // Jump to the start of that page
+				if (index > maxIndex) index = maxIndex;
 				updateCarousel();
 			});
 		});
@@ -204,6 +222,14 @@
 				}
 				updateCarousel();
 			}, 3000);
+		});
+
+		// Initial adjustment
+		adjustVisibleImages();
+
+		// Handle window resize
+		$(window).resize(function () {
+			adjustVisibleImages();
 		});
 	});
 

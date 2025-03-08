@@ -98,7 +98,7 @@ input, select, textarea {
 		box-sizing: inherit;
 	}
 
-	body {
+	/* body {
 		background-color: #935d8c;
 		background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
 		background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
@@ -115,7 +115,28 @@ input, select, textarea {
 			-webkit-transition: none !important;
 			-ms-transition: none !important;
 			transition: none !important;
+		} */
+
+	body {
+		background: linear-gradient(-45deg, #ee7752, #cb5884, #2ba1cc, #23d5ab);
+		background-size: 400% 400%;
+		animation: gradient 15s ease infinite;
+		height: 100%;
+	}
+
+	@keyframes gradient {
+		0% {
+			background-position: 0% 50%;
 		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
 
 /* Type */
 
@@ -1996,7 +2017,7 @@ input, select, textarea {
 		display: block;
 		font-size: 0.9em;
 		font-weight: 400;
-		margin: 0 0 1em 0;
+		margin: 1em 0 0 0;
 	}
 
 	input[type="text"],
@@ -3738,9 +3759,11 @@ input, select, textarea {
 /* Carousel container */
 .carousel-container {
 	position: relative;
+	width: 100%;
 	max-width: 1500px;
 	margin: 2rem auto;
 	padding: 1rem 0;
+	overflow: hidden;
 }
 
 .carousel {
@@ -3761,7 +3784,7 @@ input, select, textarea {
 }
 
 .skill-item {
-	flex: 0 0 100px;
+	flex: 0 0 260px;
 	/* Fixed width for each item */
 	margin: 0 0px;
 	/* Add spacing between items */
@@ -3782,6 +3805,42 @@ input, select, textarea {
 .skills img:hover {
 	transform: translateY(-8px);
 	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+	.carousel {
+		width: 520px;
+		/* Width for 2 images (260px × 2) */
+	}
+}
+
+@media (max-width: 576px) {
+	.carousel {
+		width: 240px;
+		/* Width for 1 image (260px + some padding) */
+	}
+
+	.skills img {
+		width: 240px;
+		height: 240px;
+	}
+}
+
+/* For very small screens */
+@media (max-width: 320px) {
+	.carousel {
+		width: 200px;
+	}
+
+	.skill-item {
+		flex: 0 0 200px;
+	}
+
+	.skills img {
+		width: 200px;
+		height: 200px;
+	}
 }
 
 /* Navigation buttons */
@@ -3869,37 +3928,6 @@ input, select, textarea {
 	width: 60px;
 	background-color: #6c5ce7;
 	margin: 0 auto 20px;
-}
-
-/* Filter Buttons */
-.filter-container {
-	display: flex;
-	justify-content: center;
-	margin-bottom: 40px;
-}
-
-.filter-btn {
-	background-color: white;
-	border: 1px solid #ddd;
-	padding: 8px 20px;
-	cursor: pointer;
-	font-size: 0.9rem;
-	font-weight: 500;
-	transition: all 0.3s ease;
-}
-
-.filter-btn:first-child {
-	border-radius: 4px 0 0 4px;
-}
-
-.filter-btn:last-child {
-	border-radius: 0 4px 4px 0;
-}
-
-.filter-btn.active {
-	background-color: #6c5ce7;
-	color: white;
-	border-color: #6c5ce7;
 }
 
 /* Projects Grid */
